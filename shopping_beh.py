@@ -21,7 +21,7 @@ def load_data():
     return data 
 #%%
 #%%
-col1, col2, col3, col8, col9, col10 = st.columns(6, gap ="small")
+col1, col2, col3, col8, col9 = st.columns(5, gap ="small")
 with col1:
     st.subheader("Data summary")
     st.write(df.describe()) 
@@ -38,10 +38,6 @@ with col8:
     unique_counts = pd.DataFrame(df.nunique(), columns=["Unique Values"])
     st.write(unique_counts)
 with col9:
-    st.subheader("Data shape")
-    rows, cols = df.shape
-    st.write((f"{rows} wierszy x {cols} kolumn"), use_container_width=True)
-with col10:
     st.subheader("Columns preview")
     st.write(df.head())
 #%%
@@ -162,3 +158,4 @@ else:
     st.info("Brak kolumn 'Location' i/lub 'Purchase Amount (USD)'.")
 
 # %%
+
