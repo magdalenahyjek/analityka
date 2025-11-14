@@ -19,7 +19,14 @@ st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allo
 
 st.title("Shopping behaviour analysis")
 st.write("Zachowania zakupowe klientów w sklepie internetowym") 
-st.text_input("Wpisz coś tutaj:")
+notatka = st.text_input("Dodaj notatkę do analizy:")
+
+if notatka:
+    with open("notatki.txt", "a", encoding="utf-8") as f:
+        f.write(notatka + "\n")
+    st.success("Notatka zapisana! Możesz ją pobrać poniżej.")
+    with open("notatki.txt", "r", encoding="utf-8") as f:
+        st.download_button("Pobierz notatki", f, file_name="notatki.txt")
 @st.cache_data
 def load_data():
     #data = pd.read_csv("shopping_behaviour.csv")
