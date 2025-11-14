@@ -14,7 +14,6 @@ DATA_PATH = Path(__file__).parent / "DATA" / "shopping_behaviour.csv"
 df = pd.read_csv(DATA_PATH, encoding="utf-8")
 
 #df = pd.read_csv("shopping_behaviour.csv")
-st.set_page_config(layout="wide")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True )
 
 st.title("Shopping behaviour analysis")
@@ -26,7 +25,8 @@ def load_data():
     return pd.read_csv(DATA_PATH, encoding="utf-8") #data 
 #%%
 #%%
-col1, col2, col3 = st.columns(3)
+st.set_page_config(layout="wide")
+col1, col2 = st.columns(2)
 with col1:
     st.subheader("Data summary")
     st.write(df.describe()) 
@@ -34,6 +34,8 @@ with col2:
     st.subheader("Data types")
     dtypes_df = pd.DataFrame(df.dtypes, columns=["Data Type"])
     st.write(dtypes_df)
+    
+col3, = st.columns(1)
 with col3:
     st.subheader("Missing values")
     missing_df = pd.DataFrame(df.isnull().sum(), columns=["Missing Values"])
@@ -180,5 +182,6 @@ else:
 
 
 # %%
+
 
 
