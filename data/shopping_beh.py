@@ -38,6 +38,7 @@ with col3:
     st.subheader("Missing values")
     missing_df = pd.DataFrame(df.isnull().sum(), columns=["Missing Values"])
     st.write(missing_df)
+    
 col8, col9 = st.columns(2)
 with col8:
     st.subheader("Unique values per column")
@@ -179,4 +180,5 @@ else:
 
 
 # %%
+
 
