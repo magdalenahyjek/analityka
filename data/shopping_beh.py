@@ -26,7 +26,7 @@ def load_data():
     return pd.read_csv(DATA_PATH, encoding="utf-8") #data 
 #%%
 #%%
-col1, col2, col3, col8, col9 = st.columns(5)
+col1, col2, col3 = st.columns(3)
 with col1:
     st.subheader("Data summary")
     st.write(df.describe()) 
@@ -38,6 +38,7 @@ with col3:
     st.subheader("Missing values")
     missing_df = pd.DataFrame(df.isnull().sum(), columns=["Missing Values"])
     st.write(missing_df)
+col8, col9 = st.columns(2)
 with col8:
     st.subheader("Unique values per column")
     unique_counts = pd.DataFrame(df.nunique(), columns=["Unique Values"])
@@ -178,3 +179,4 @@ else:
 
 
 # %%
+
