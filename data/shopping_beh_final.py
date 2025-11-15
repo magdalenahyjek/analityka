@@ -61,6 +61,19 @@ col9, = st.columns(1)
 with col9:
     st.subheader("Columns preview")
     st.write(df.head())
+col11, = st.columns([6])
+with col11:
+    st.subheader("How many men and women")
+    gender_counts = df['Gender'].value_counts()
+    gender_percent = df['Gender'].value_counts(normalize=True) * 100
+    gender_counts_df = pd.DataFrame({
+    'gender': gender_counts.index,
+    'count': gender_counts.values,
+    'percent': gender_percent.values.round(0)
+    })
+
+    st.write(gender_counts_df)
+    
 #%%
 st.subheader("Filter Data")
 columns = df.columns.tolist()
